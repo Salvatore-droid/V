@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Heart Animation with Portrait Reveal</title>
+    <meta charset="UTF-8">
+    <meta name="Keywords">
+    <meta name="Description">
+    <style>
+      canvas {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+      audio {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 100;
+      }
+      #portrait-container {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: none;
+        z-index: 10;
+        pointer-events: none;
+      }
+      #portrait-image {
+        position: absolute;
+        top: 20%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        max-width: 300px;
+        max-height: 350px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 3px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 0 50px rgba(255, 105, 180, 0.8);
+        opacity: 0;
+        transition: all 2s ease-in-out;
+        filter: drop-shadow(0 0 10px rgba(255, 105, 180, 0.6));
+        animation: gentlePulse 4s ease-in-out infinite alternate;
+      }
+      #particle-container {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+      }
+      @keyframes gentlePulse {
+        0% {
+          filter: drop-shadow(0 0 10px rgba(255, 105, 180, 0.6)) brightness(1);
+        }
+        100% {
+          filter: drop-shadow(0 0 20px rgba(255, 105, 180, 0.8)) brightness(1.05);
+        }
+      }
+      @media (max-width: 768px) {
+        #portrait-image {
+          max-width: 250px;
+          max-height: 300px;
+          object-fit: cover;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="heart" width="1920" height="947"></canvas>
+    <div id="portrait-container">
+      <img id="portrait-image" src="shamim.jpg" alt="Beloved">
+    </div>
+    <div id="particle-container"></div>
+    <audio id="background-audio" autoplay loop>
+      <source src="ordinary.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+    <script src="ricky.js"></script>
+  </body>
+</html>
